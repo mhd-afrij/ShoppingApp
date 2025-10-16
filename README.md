@@ -58,3 +58,13 @@ This project is built entirely using front-end technologies:
 **`index.html`** (Customer Details) $\rightarrow$ **`sales.html`** (Item Selection) $\rightarrow$ **`purchase.html`** (Summary) $\rightarrow$ **`checkout.html`** (Final Invoice & Print)
 
 **(Data is transferred via `localStorage` at each step)**
+
+<img width="581" height="594" alt="image" src="https://github.com/user-attachments/assets/6d74e444-6ea8-443b-b207-08671fd26fb7" />
+<img width="570" height="589" alt="image" src="https://github.com/user-attachments/assets/74daeb2c-5079-41b9-879a-0b783fbaaacb" />
+<img width="855" height="502" alt="image" src="https://github.com/user-attachments/assets/5c622f9a-94d4-4ab1-9ac1-63d9e330e397" />
+<img width="643" height="573" alt="image" src="https://github.com/user-attachments/assets/2e65894e-786d-432d-b96d-922eed6893c9" />
+<img width="997" height="633" alt="image" src="https://github.com/user-attachments/assets/39208e9a-cb59-4b8f-87b0-2bc57f16c26c" />
+
+
+
+
