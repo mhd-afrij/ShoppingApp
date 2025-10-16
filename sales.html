@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Item Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Items and Quantities</h1>
+        <form id="salesForm">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Price (RS.)</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="itemTableBody">
+                    </tbody>
+            </table>
+            <button type="submit">Submit to Purchase Page</button>
+        </form>
+        <button onclick="window.location.href='index.html'">Go Back to Home</button>
+    </div>
+
+    <script>
+        const availableItems = [
+            { id: 1, name: 'Apples', price: 50.00 },
+            { id: 2, name: 'Oranges', price: 40.00 },
+            { id: 3, name: 'Bananas', price: 30.00 },
+            { id: 4, name: 'Grapes', price: 150.00 },
+            { id: 5, name: 'Mangoes', price: 80.00 },
+            { id: 6, name: 'Potatoes', price: 60.00 },
+            { id: 7, name: 'Onions', price: 70.00 },
+            { id: 8, name: 'Tomatoes', price: 90.00 },
+            { id: 9, name: 'Carrots', price: 45.00 },
+            { id: 10, name: 'Cabbage', price: 55.00 }
+        ];
+
+        // Function to render items in the table
+        function renderItems() {
+            const tbody = document.getElementById('itemTableBody');
+            tbody.innerHTML = '';
+            availableItems.forEach(item => {
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.price.toFixed(2)}</td>
+                    <td><input type="number" name="quantity-${item.id}" data-price="${item.price}" data-name="${item.name}" min="0" value="0" style="width: 80px;"></td>
+                `;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', renderItems);
+
+        document.getElementById('salesForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const selectedItems = [];
+            
+            availableItems.forEach(item => {
+                const quantityInput = document.querySelector(`input[name="quantity-${item.id}"]`);
+                const quantity = parseInt(quantityInput.value);
+
+                if (quantity > 0) {
+                    selectedItems.push({
+                        id: item.id,
+                        name: item.name,
+                        price: item.price,
+                        quantity: quantity,
+                        // Calculate line total now
+                        lineTotal: item.price * quantity
+                    });
+                }
+            });
+
+            // Save the selected items to localStorage
+            localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+
+            // Navigate to the next page
+            window.location.href = 'purchase.html';
+        });
+    </script>
+</body>
+</html>
